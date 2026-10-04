@@ -1,0 +1,4 @@
+Save the college logo from https://www.kingsengg.edu.in as:
+   logo.png
+in this folder (src/main/resources/static/images/).
+Until then, a round "KCE" badge is shown in the header.

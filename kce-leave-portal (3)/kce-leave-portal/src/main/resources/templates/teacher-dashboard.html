@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/style.css}"><script th:src="@{/js/app.js}" defer></script><title>Teacher Dashboard</title></head><body>
+<div th:replace="~{fragments :: header}"></div>
+<div class="container">
+  <div class="userbar"><h2 class="title">Class <span th:text="${cls}"></span> - Leave Requests</h2>
+    <div><a class="btn small gold" style="margin:0" th:href="@{/teacher/dashboard}">⟳ Refresh</a>
+      <a class="btn small red" style="margin:0 0 0 8px" th:href="@{/teacher/logout}">Logout</a></div></div>
+  <div class="stats">
+    <div class="stat"><b th:text="${total}"></b><span>Total Requests</span></div>
+    <div class="stat s-p"><b th:text="${pending}"></b><span>Pending</span></div>
+    <div class="stat s-a"><b th:text="${approved}"></b><span>Approved</span></div>
+    <div class="stat s-r"><b th:text="${rejected}"></b><span>Rejected</span></div>
+  </div>
+  <div class="card">
+    <p class="hint" th:if="${#lists.isEmpty(requests)}">No leave requests from your class yet.</p>
+    <div class="table-wrap" th:if="${!#lists.isEmpty(requests)}"><table>
+      <thead><tr><th>Student</th><th>Reg / Roll No</th><th>Leave Dates</th><th>Reason</th><th>Parent Mobile</th><th>Status</th><th>Action</th></tr></thead>
+      <tbody><tr th:each="r : ${requests}">
+        <td><b th:text="${r.name}"></b></td>
+        <td><span th:text="${r.registerNo}"></span> / <span th:text="${r.rollNo}"></span></td>
+        <td><span th:text="${r.fromDate}"></span> → <span th:text="${r.toDate}"></span></td>
+        <td th:text="${r.reason}"></td><td th:text="${r.parentMobile}"></td>
+        <td><span th:class="'badge ' + ${r.status.toLowerCase()}" th:text="${r.status}"></span></td>
+        <td class="actions">
+          <form th:if="${r.status == 'PENDING'}" th:action="@{/teacher/leave/{id}/approve(id=${r.id})}" method="post"><button class="btn green small">✔ Approve</button></form>
+          <form th:if="${r.status == 'PENDING'}" th:action="@{/teacher/leave/{id}/reject(id=${r.id})}" method="post"><button class="btn red small">✖ Reject</button></form>
+        </td></tr></tbody></table></div>
+  </div>
+</div>
+<footer th:replace="~{fragments :: footer}"></footer></body></html>
