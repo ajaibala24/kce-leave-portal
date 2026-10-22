@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/style.css}"><script th:src="@{/js/app.js}" defer></script><title>KCE Leave Portal</title></head><body>
+<div th:replace="~{fragments :: header}"></div>
+<div class="container">
+  <div class="hero"><span class="bubble b1"></span><span class="bubble b2"></span><span class="bubble b3"></span>
+    <h2>Student Leave Request Portal</h2>
+    <p>A simple and paperless way to apply for leave and get approval from your class teacher.</p>
+  </div>
+  <div class="choices">
+    <div class="card choice"><div class="icon">🎓</div><h3>Student Login</h3>
+      <p>Login, fill the leave form and track your approval status.</p>
+      <a class="btn gold" th:href="@{/student/login}">Student Login</a></div>
+    <div class="card choice"><div class="icon">👨‍🏫</div><h3>Class Teacher Login</h3>
+      <p>Review your class's leave requests and approve or reject them.</p>
+      <a class="btn" th:href="@{/teacher/login}">Teacher Login</a></div>
+  </div>
+</div>
+<footer th:replace="~{fragments :: footer}"></footer></body></html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/style.css}"><script th:src="@{/js/app.js}" defer></script><title>My Leave Status</title></head><body>
+<div th:replace="~{fragments :: header}"></div>
+<div class="container"><div class="card">
+  <div class="userbar"><div><h2 class="title">📋 My Leave Status</h2><p class="sub" th:text="${student.name} + ' | ' + ${student.registerNo} + ' | ' + ${student.className}"></p></div>
+    <div><a class="btn small gold" style="margin:0" th:href="@{/student/leave}">+ New Leave</a>
+      <a class="btn small red" style="margin:0 0 0 8px" th:href="@{/student/logout}">Logout</a></div></div>
+  <div class="success" th:if="${success}" th:text="${success}"></div>
+  <p class="hint" th:if="${#lists.isEmpty(requests)}">You have not applied for any leave yet.</p>
+  <div class="table-wrap" th:if="${!#lists.isEmpty(requests)}"><table>
+    <thead><tr><th>Applied On</th><th>From</th><th>To</th><th>Reason</th><th>Status</th></tr></thead>
+    <tbody><tr th:each="r : ${requests}">
+      <td th:text="${#temporals.format(r.appliedOn,'dd MMM yyyy, hh:mm a')}"></td>
+      <td th:text="${r.fromDate}"></td><td th:text="${r.toDate}"></td><td th:text="${r.reason}"></td>
+      <td><span th:class="'badge ' + ${r.status.toLowerCase()}" th:text="${r.status}"></span></td>
+    </tr></tbody></table></div>
+</div></div>
+<footer th:replace="~{fragments :: footer}"></footer></body></html>

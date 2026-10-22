@@ -1,0 +1,108 @@
+:root{--navy:#0b2a5b;--navy2:#143d85;--gold:#c9a227;--gold2:#f0d060;--bg:#f2f5fa;--text:#1f2937;--muted:#64748b}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:'Segoe UI',Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+
+/* ---------- header ---------- */
+.topbar{background:linear-gradient(120deg,var(--navy),var(--navy2),var(--navy));background-size:200% 200%;animation:bgshift 10s ease infinite;color:#fff;border-bottom:4px solid var(--gold);box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.topbar-inner{max-width:1100px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:14px;text-decoration:none;color:#fff}
+.logo-box{width:66px;height:66px;border-radius:50%;background:#fff;border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;overflow:hidden;animation:pop .8s ease both}
+.logo-box img{width:100%;height:100%;object-fit:contain}
+.logo-fallback{display:none;width:100%;height:100%;align-items:center;justify-content:center;font-weight:800;color:var(--navy);font-size:20px;letter-spacing:1px}
+.brand-text h1{margin:0;font-size:22px;letter-spacing:.5px;text-transform:uppercase}
+.brand-text p{margin:2px 0 0;font-size:12px;color:var(--gold2)}
+.nav a{color:#fff;text-decoration:none;margin-left:6px;padding:8px 14px;border-radius:20px;font-size:14px;transition:.3s;position:relative}
+.nav a:hover{background:var(--gold);color:var(--navy);transform:translateY(-2px)}
+.marquee{background:var(--gold);color:var(--navy);font-size:13px;font-weight:600;padding:5px 0;overflow:hidden;white-space:nowrap}
+.marquee span{display:inline-block;padding-left:100%;animation:scroll 28s linear infinite}
+
+/* ---------- layout ---------- */
+.container{max-width:1100px;width:100%;margin:32px auto;padding:0 18px;flex:1}
+.card{background:#fff;border-radius:16px;padding:30px;box-shadow:0 6px 24px rgba(11,42,91,.10);border-top:5px solid var(--gold);animation:fadeUp .7s ease both}
+.card.narrow{max-width:480px;margin:auto}
+h2.title{margin:0 0 6px;color:var(--navy);font-size:26px}
+.sub{color:var(--muted);margin:0 0 18px;font-size:14px}
+
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:20px;padding:46px 34px;text-align:center;position:relative;overflow:hidden;margin-bottom:28px;animation:fadeUp .7s ease both}
+.hero h2{margin:0 0 8px;font-size:32px}
+.hero p{margin:0;color:#d7e3ff}
+.hero .bubble{position:absolute;border-radius:50%;background:rgba(240,208,96,.15);animation:float 7s ease-in-out infinite}
+.b1{width:160px;height:160px;top:-40px;left:-30px}.b2{width:110px;height:110px;bottom:-30px;right:60px;animation-delay:2s}.b3{width:70px;height:70px;top:30px;right:-15px;animation-delay:4s}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:700px){.choices{grid-template-columns:1fr}}
+.choice{text-align:center;transition:.35s}
+.choice:hover{transform:translateY(-8px);box-shadow:0 14px 34px rgba(11,42,91,.22)}
+.choice .icon{font-size:54px;display:inline-block;animation:bounce 2.4s ease-in-out infinite}
+.choice h3{color:var(--navy);margin:10px 0 6px}
+.choice p{color:var(--muted);font-size:14px}
+
+/* ---------- form ---------- */
+label{display:block;margin:16px 0 5px;font-weight:600;font-size:14px;color:var(--navy)}
+input,textarea{width:100%;padding:11px 13px;border:2px solid #d5deee;border-radius:10px;font-size:15px;transition:.25s;font-family:inherit;background:#fff}
+input:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 4px rgba(201,162,39,.2);transform:translateY(-1px)}
+input[readonly]{background:#eef2f9;color:#475569;cursor:not-allowed}
+textarea{min-height:90px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+@media(max-width:700px){.row,.row3{grid-template-columns:1fr}}
+
+/* ---------- buttons (animated) ---------- */
+.btn{position:relative;overflow:hidden;display:inline-block;border:0;cursor:pointer;text-decoration:none;font-size:15px;font-weight:600;padding:12px 28px;border-radius:30px;color:#fff;background:linear-gradient(135deg,var(--navy),var(--navy2));box-shadow:0 5px 14px rgba(11,42,91,.35);transition:transform .25s,box-shadow .25s;margin-top:20px}
+.btn::before{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-25deg);transition:left .6s}
+.btn:hover::before{left:130%}
+.btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 10px 22px rgba(11,42,91,.4)}
+.btn:active{transform:scale(.96)}
+.btn.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy)}
+.btn.green{background:linear-gradient(135deg,#15803d,#22c55e);margin:0}
+.btn.red{background:linear-gradient(135deg,#b91c1c,#ef4444);margin:0}
+.btn.grey{background:linear-gradient(135deg,#475569,#64748b)}
+.btn.small{padding:8px 16px;font-size:13px}
+.ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.6);transform:scale(0);animation:ripple .6s linear;pointer-events:none}
+
+/* ---------- messages ---------- */
+.error{background:#fee2e2;color:#991b1b;padding:11px 15px;border-radius:10px;margin-bottom:10px;border-left:5px solid #dc2626;animation:shake .4s}
+.success{background:#dcfce7;color:#166534;padding:11px 15px;border-radius:10px;margin-bottom:10px;border-left:5px solid #16a34a;animation:fadeUp .5s}
+.hint{color:var(--muted);font-size:13px}
+
+/* ---------- table / badges ---------- */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+th{background:var(--navy);color:#fff;padding:12px 10px;text-align:left;white-space:nowrap}
+th:first-child{border-radius:10px 0 0 0}th:last-child{border-radius:0 10px 0 0}
+td{padding:12px 10px;border-bottom:1px solid #e5e9f2;vertical-align:top}
+tbody tr{transition:.25s;animation:fadeUp .5s ease both}
+tbody tr:hover{background:#f6f9ff;transform:scale(1.005)}
+.badge{display:inline-block;padding:5px 14px;border-radius:999px;font-size:12px;font-weight:700;color:#fff;letter-spacing:.5px}
+.badge.approved{background:#16a34a;box-shadow:0 0 0 0 rgba(22,163,74,.6);animation:glow 2s infinite}
+.badge.pending{background:#f59e0b;animation:pulse 1.6s infinite}
+.badge.rejected{background:#dc2626}
+.actions form{display:inline-block;margin-right:6px}
+
+/* ---------- stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:22px}
+@media(max-width:700px){.stats{grid-template-columns:1fr 1fr}}
+.stat{background:#fff;border-radius:14px;padding:18px;text-align:center;box-shadow:0 4px 14px rgba(0,0,0,.08);border-bottom:4px solid var(--navy);transition:.3s;animation:fadeUp .6s ease both}
+.stat:hover{transform:translateY(-5px)}
+.stat b{display:block;font-size:30px;color:var(--navy)}
+.stat span{font-size:13px;color:var(--muted)}
+.stat.s-p{border-color:#f59e0b}.stat.s-a{border-color:#16a34a}.stat.s-r{border-color:#dc2626}
+.userbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:6px}
+.chip{background:#e8efff;color:var(--navy);padding:6px 14px;border-radius:20px;font-size:13px;font-weight:600}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy);color:#cbd5e1;text-align:center;padding:18px 12px;font-size:13px;border-top:4px solid var(--gold);line-height:1.7}
+footer b{color:var(--gold2)}
+
+/* ---------- keyframes ---------- */
+@keyframes fadeUp{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+@keyframes bgshift{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+@keyframes pop{0%{transform:scale(0) rotate(-120deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes scroll{to{transform:translateX(-100%)}}
+@keyframes ripple{to{transform:scale(4);opacity:0}}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes glow{0%{box-shadow:0 0 0 0 rgba(22,163,74,.6)}70%{box-shadow:0 0 0 10px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div th:fragment="header">
+  <div class="topbar"><div class="topbar-inner">
+    <a class="brand" th:href="@{/}">
+      <div class="logo-box">
+        <img th:src="@{/images/logo.png}" alt="KCE Logo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="logo-fallback">KCE</div>
+      </div>
+      <div class="brand-text">
+        <h1>Kings College of Engineering</h1>
+        <p>Punalkulam, Pudukkottai - 613 303 &nbsp;|&nbsp; Approved by AICTE &nbsp;|&nbsp; Affiliated to Anna University, Chennai</p>
+      </div>
+    </a>
+    <div class="nav">
+      <a th:href="@{/}">Home</a>
+      <a th:href="@{/student/login}">Student</a>
+      <a th:href="@{/teacher/login}">Class Teacher</a>
+    </div>
+  </div></div>
+  <div class="marquee"><span>📢 Student Leave Request &amp; Approval Portal &nbsp;•&nbsp; Apply for leave online &nbsp;•&nbsp; Your class teacher approves it instantly &nbsp;•&nbsp; Track your status anytime</span></div>
+</div>
+
+<footer th:fragment="footer">
+  <b>Kings College of Engineering</b>, Punalkulam, Gandarvakottai Taluk, Pudukkottai District - 613 303, Tamil Nadu<br>
+  Phone: 04362-282474 &nbsp;|&nbsp; Email: contact@kingsengg.edu.in &nbsp;|&nbsp; www.kingsengg.edu.in<br>
+  &copy; Department of Computer Science &amp; Engineering - Leave Request Portal
+</footer>
+</body>
+</html>

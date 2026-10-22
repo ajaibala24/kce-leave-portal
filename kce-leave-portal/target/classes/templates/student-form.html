@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" th:href="@{/css/style.css}"><script th:src="@{/js/app.js}" defer></script><title>Leave Form</title></head><body>
+<div th:replace="~{fragments :: header}"></div>
+<div class="container"><div class="card">
+  <div class="userbar"><div><h2 class="title">📝 Leave Request Form</h2><p class="sub">Fields marked in grey are filled from your login.</p></div>
+    <div><span class="chip" th:text="'Welcome, ' + ${student.name}"></span>
+      <a class="btn small grey" style="margin:0 0 0 8px" th:href="@{/student/status}">My Status</a>
+      <a class="btn small red" style="margin:0 0 0 8px" th:href="@{/student/logout}">Logout</a></div></div>
+  <div class="error" th:if="${error}" th:text="${error}"></div>
+  <form th:action="@{/student/leave}" method="post">
+    <div class="row3">
+      <div><label>Student Name</label><input th:value="${student.name}" readonly></div>
+      <div><label>Class &amp; Section</label><input th:value="${student.className}" readonly></div>
+      <div><label>Register No</label><input th:value="${student.registerNo}" readonly></div>
+    </div>
+    <div class="row">
+      <div><label>Roll No</label><input name="rollNo" th:value="${rollNo}" placeholder="Enter your roll number" required></div>
+      <div><label>Parent's Mobile No</label><input name="parentMobile" th:value="${parentMobile}" maxlength="10" pattern="\d{10}" placeholder="10-digit mobile number" required></div>
+    </div>
+    <label>Reason for Leave</label><textarea name="reason" placeholder="Explain why you need leave" required th:text="${reason}"></textarea>
+    <div class="row">
+      <div><label>Leave Start Date</label><input type="date" id="fromDate" name="fromDate" th:value="${fromDate}" required></div>
+      <div><label>Leave End Date</label><input type="date" id="toDate" name="toDate" th:value="${toDate}" required></div>
+    </div>
+    <button class="btn gold" type="submit">Submit Leave Request</button>
+  </form>
+</div></div>
+<footer th:replace="~{fragments :: footer}"></footer></body></html>
